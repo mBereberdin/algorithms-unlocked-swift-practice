@@ -13,7 +13,7 @@ var shelf =  ["Visockiy","Pushkin","Sholohov"],
 numbers: [Int8] = [1,1,1,2,4],
 fakeArr: [String] = []
 //body
-Search().LinearSearch(array: fakeArr, searchingItem: "a")
+
 //Linear search
 print(numbers)
 print(shelf)
