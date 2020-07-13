@@ -10,7 +10,7 @@ import Foundation
 
 class Search{
 
-    public func LinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? { //Last index
+    public func LinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? { //Last index if exist index
         var answer: Int? = nil
         for (index,element) in array.enumerated() {
             if element == searchingItem {
@@ -20,7 +20,7 @@ class Search{
         return answer
     }
     
-    public func BetterLinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? { //First index
+    public func BetterLinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? { //First if exist index
         for (index,element) in array.enumerated() {
             if element == searchingItem {
                 return index
@@ -29,7 +29,7 @@ class Search{
         return nil
     }
     
-    public func SentinelLinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? { //First index
+    public func SentinelLinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? { //First if exist index
         if array.count > 0 {
             var _array = array,
             counter: Int = 0
