@@ -41,4 +41,7 @@ if let position = Search().SentinelLinearSearch(array: arrayOfNumbers , searchin
 }else{
     print("Item not found")
 }
+//Alg
+print("\nRecursion\n")
+print("15! = \(Algorithm().Factorial(15))")
 print("\n")
