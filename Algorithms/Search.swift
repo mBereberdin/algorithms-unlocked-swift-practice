@@ -98,4 +98,27 @@ class Search{
         }
     }
     
+    /// Binary search for sorted int arrays. Return position if item exist else nil
+    /// - Parameters:
+    ///   - array: sorted array for searching
+    ///   - searchingItem: item, that need to find
+    /// - Returns: Position if item exist else nil.
+    func BinarySearch(array: [Int], searchingItem: Int) -> Int? {
+        var leftBorder:Int = 0,
+        rightBorder:Int = array.count - 1,
+        mid: Int
+        
+        while leftBorder <= rightBorder {
+            mid = (rightBorder+leftBorder) / 2
+            
+            if array[mid] == searchingItem {
+                return mid
+            } else if array[mid] > searchingItem {
+                rightBorder = mid - 1
+            } else {
+                leftBorder = mid + 1
+            }
+        }
+        return nil
+    }
 }

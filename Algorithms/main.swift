@@ -9,7 +9,8 @@
 import Foundation
 
 var arrayOfAuthors =  ["Visockiy","Pushkin","Sholohov"],
-arrayOfNumbers: [Int8] = [1,1,1,2,4]
+arrayOfNumbers: [Int8] = [1,1,1,2,4],
+sortedArrayOfNumbers: [Int8] = [1,2,3,4,5,6,7,8]
 
 print(arrayOfNumbers)
 print(arrayOfAuthors)
@@ -59,4 +60,11 @@ if let position = Search().MineRecursiveLinearSearch(array: &arrayOfNumbers, sea
 print("\n*Factorail*")
 var someNumber = 3
 print("\(someNumber)! = \(Algorithm().Factorial(someNumber))")
+//Binary
+print("*Binary search*")
+if let position = Search().BinarySearch(array: sortedArrayOfNumbers.map { Int($0) }, searchingItem: Int(8)){
+    print("Item found on \(position) position")
+}else{
+    print("Item not found")
+}
 print("\n")
