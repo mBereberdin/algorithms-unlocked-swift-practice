@@ -39,7 +39,7 @@ class Search{
         return nil
     }
     
-    /// Sentinel linear search. Return first position if item founded else nil.
+    /// Sentinel linear search. Return first position if item founded else nil. (My version of sentinel search)
     /// - Parameters:
     ///   - array: Array for searching item.
     ///   - searchingItem: Item, that need to find.
@@ -98,10 +98,10 @@ class Search{
         }
     }
     
-    /// Binary search for sorted int arrays. Return position if item exist else nil
+    /// Binary search for sorted int arrays. Return position if item exist else nil.
     /// - Parameters:
-    ///   - array: sorted array for searching
-    ///   - searchingItem: item, that need to find
+    ///   - array: sorted array for searching.
+    ///   - searchingItem: item, that need to find.
     /// - Returns: Position if item exist else nil.
     func BinarySearch(array: [Int], searchingItem: Int) -> Int? {
         var leftBorder:Int = 0,
@@ -113,10 +113,8 @@ class Search{
             
             if array[mid] == searchingItem {
                 return mid
-            } else if array[mid] > searchingItem {
-                rightBorder = mid - 1
             } else {
-                leftBorder = mid + 1
+                array[mid] > searchingItem ? { return rightBorder = mid - 1 }() : { return leftBorder = mid + 1 }()
             }
         }
         return nil

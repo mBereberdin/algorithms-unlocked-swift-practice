@@ -8,69 +8,40 @@
 
 import Foundation
 
+func SafeUnwrapAndPrintPosition (_ someOptionalValue: Int?) {
+    if let position = someOptionalValue {
+        print("Item found on \(position) position")
+    }else{
+        print("Item not found")
+    }
+}
+
+//Main
 var arrayOfAuthors =  ["Visockiy","Pushkin","Sholohov"],
 arrayOfNumbers: [Int8] = [1,1,1,2,4],
-sortedArrayOfNumbers: [Int8] = [1,2,3,4,5,6,7,8]
+sortedArrayOfNumbers: [Int8] = [1,2,3,4,5,6,7,8],
+someNumber = Int(Int8.random(in: 1...10))
 
 print(arrayOfNumbers)
 print(arrayOfAuthors)
 
 print("\n*Linear search*")
-//Authors
-if let position = Search().LinearSearch(array: arrayOfAuthors , searchingItem: "Sholohov") {
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
-//Numbers
-if let position = Search().LinearSearch(array: arrayOfNumbers , searchingItem: 4) {
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
+//Authors check
+SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfAuthors , searchingItem: "Sholohov"))
+//Numbers check
+SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfNumbers , searchingItem: 4))
 print("\n*BetterLinear search*")
-//Numbers
-if let position = Search().BetterLinearSearch(array: arrayOfNumbers , searchingItem: 4) {
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
+SafeUnwrapAndPrintPosition(Search().BetterLinearSearch(array: arrayOfNumbers , searchingItem: 4))
 print("\n*SentinelLinear search*")
-//Numbers
-if let position = Search().SentinelLinearSearch(array: arrayOfNumbers , searchingItem: 4) {
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
-//RecursionLinearSearch
+SafeUnwrapAndPrintPosition(Search().SentinelLinearSearch(array: arrayOfNumbers , searchingItem: 4))
 print("\n*Recursion linear search*")
-if let position = Search().RecursiveLinearSearch(array: arrayOfNumbers, searchingItem: 4, index: 0){
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
-//MineRecursiveLinearSearch
+SafeUnwrapAndPrintPosition(Search().RecursiveLinearSearch(array: arrayOfNumbers, searchingItem: 4, index: 0))
 print("\n*Mine recursion linear search*")
-if let position = Search().MineRecursiveLinearSearch(array: &arrayOfNumbers, searchingItem: 4){
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
-//Alg
+SafeUnwrapAndPrintPosition(Search().MineRecursiveLinearSearch(array: &arrayOfNumbers, searchingItem: 4))
 print("\n*Factorail*")
-var someNumber = 3
 print("\(someNumber)! = \(Algorithm().Factorial(someNumber))")
-//Binary
 print("*Binary search*")
-if let position = Search().BinarySearch(array: sortedArrayOfNumbers.map { Int($0) }, searchingItem: Int(8)){
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
+SafeUnwrapAndPrintPosition(Search().BinarySearch(array: sortedArrayOfNumbers.map( { Int($0) }), searchingItem: 8))
 print("*Recursive binary search*")
-if let position = Search().RecursiveBinarySearch(array: sortedArrayOfNumbers.map( { Int($0) } ), searchingItem: 8, rightBorder: sortedArrayOfNumbers.count - 1){
-    print("Item found on \(position) position")
-}else{
-    print("Item not found")
-}
+SafeUnwrapAndPrintPosition(Search().RecursiveBinarySearch(array: sortedArrayOfNumbers.map( { Int($0) } ), searchingItem: 8, rightBorder: sortedArrayOfNumbers.count - 1))
 print("\n")
