@@ -121,4 +121,24 @@ class Search{
         }
         return nil
     }
+    
+    /// Recursive binary search. Return first position if item founded else nil.
+    /// - Parameters:
+    ///   - array: Sorted array for searching.
+    ///   - searchingItem: Item, that need to find.
+    ///   - leftBorder: Left border for search in array ( for correct search - default 0).
+    ///   - rightBorder: Right border for search in array.
+    /// - Returns: Position if item exist else nil.
+    func RecursiveBinarySearch( array: Array<Int>, searchingItem: Int, leftBorder: Int = 0, rightBorder: Int) -> Int? {
+        if leftBorder > rightBorder {
+            return nil
+        } else {
+            let mid = (leftBorder + rightBorder) / 2
+            if array[mid] == searchingItem {
+                return mid
+            } else {
+                return array[mid] > searchingItem ? RecursiveBinarySearch(array: array, searchingItem: searchingItem, leftBorder: leftBorder, rightBorder: mid - 1) : RecursiveBinarySearch(array: array, searchingItem: searchingItem, leftBorder: mid + 1, rightBorder: rightBorder)
+            }
+        }
+    }
 }

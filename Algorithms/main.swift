@@ -67,4 +67,10 @@ if let position = Search().BinarySearch(array: sortedArrayOfNumbers.map { Int($0
 }else{
     print("Item not found")
 }
+print("*Recursive binary search*")
+if let position = Search().RecursiveBinarySearch(array: sortedArrayOfNumbers.map( { Int($0) } ), searchingItem: 8, rightBorder: sortedArrayOfNumbers.count - 1){
+    print("Item found on \(position) position")
+}else{
+    print("Item not found")
+}
 print("\n")
