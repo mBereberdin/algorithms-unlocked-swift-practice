@@ -9,11 +9,10 @@
 import Foundation
 
 func SafeUnwrapAndPrintPosition (_ someOptionalValue: Int?) {
-    if let position = someOptionalValue {
-        print("Item found on \(position) position")
-    }else{
-        print("Item not found")
+    guard let position = someOptionalValue else {
+        return print("Item not found")
     }
+    return print("Item found on \(position) position")
 }
 
 //Main
