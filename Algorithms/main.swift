@@ -16,17 +16,26 @@ func SafeUnwrapAndPrintPosition (_ someOptionalValue: Int?) {
 }
 
 //Main
-var arrayOfAuthors =  ["Visockiy","Pushkin","Sholohov"],
+var arrayOfBooks: [Book] = [
+    Book(author: "Gogol", title: "Dead souls"),
+    Book(author: "Dostoevsky", title: "The Idiot"),
+    Book(author: "Pushkin", title: "The Daughter of the Commandant"),
+    Book(author: "Pushkin", title: "The Queen Of spades")
+],
 arrayOfNumbers: [Int8] = [1,1,1,2,4],
 sortedArrayOfNumbers: [Int8] = [1,2,3,4,5,6,7,8],
 someNumber = Int(Int8.random(in: 1...10))
 
+print("Books:")
+for book in arrayOfBooks {
+    print("\(book.author) - \(book.title)")
+}
+print()
 print(arrayOfNumbers)
-print(arrayOfAuthors)
 
 print("\n*Linear search*")
 //Authors check
-SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfAuthors , searchingItem: "Sholohov"))
+SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfBooks , searchingItem: Book(author: "Pushkin", title: "The Queen Of spades")))
 //Numbers check
 SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfNumbers , searchingItem: 4))
 print("\n*BetterLinear search*")
