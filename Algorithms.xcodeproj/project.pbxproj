@@ -95,7 +95,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Михаил Беребердин";
 				TargetAttributes = {
 					2539C0C024BC34C200F4945D = {
@@ -251,6 +251,7 @@
 		2539C0C924BC34C200F4945D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5CWR9QK3B6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -262,6 +263,7 @@
 		2539C0CA24BC34C200F4945D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5CWR9QK3B6;
 				ENABLE_HARDENED_RUNTIME = YES;

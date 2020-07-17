@@ -15,7 +15,7 @@ class Search{
     ///   - array: Array for searching item.
     ///   - searchingItem: Item, that need to find.
     /// - Returns: Position if exist or nil.
-    public func LinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? {
+    public func LinearSearch<T: Equatable>(array: Array<T>, searchingItem: T) -> Int? {
         var answer: Int? = nil
         for (index,element) in array.enumerated() {
             if element == searchingItem {
@@ -30,7 +30,7 @@ class Search{
     ///   - array: Array for searching item.
     ///   - searchingItem: Item, that need to find.
     /// - Returns: Position if exist else nil.
-    public func BetterLinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? {
+    public func BetterLinearSearch<T: Equatable>(array: Array<T>, searchingItem: T) -> Int? {
         for (index,element) in array.enumerated() {
             if element == searchingItem {
                 return index
@@ -44,7 +44,7 @@ class Search{
     ///   - array: Array for searching item.
     ///   - searchingItem: Item, that need to find.
     /// - Returns: Position if exist else nil.
-    public func SentinelLinearSearch<T: Equatable>(array:[T],searchingItem: T) -> Int? {
+    public func SentinelLinearSearch<T: Equatable>(array: Array<T>, searchingItem: T) -> Int? {
         if array.count > 0 {
             var _array = array,
             counter: Int = 0
@@ -66,14 +66,14 @@ class Search{
     ///   - searchingItem: Item, that need to find.
     ///   - index: Start position in array for search.
     /// - Returns:Position if exist else nil.
-    public func RecursiveLinearSearch<T: Equatable>(array: Array<T>, searchingItem: T, index: Int) -> Int? {
+    public func RecursiveLinearSearch<T: Equatable>(array: Array<T>, searchingItem: T,startPosition index: Int) -> Int? {
         if index > array.count {
             return nil
         } else {
             if array[index] == searchingItem {
                 return index
             } else {
-                return RecursiveLinearSearch(array: array, searchingItem: searchingItem, index: index+1)
+                return RecursiveLinearSearch(array: array, searchingItem: searchingItem, startPosition: index+1)
             }
         }
     }
@@ -84,7 +84,7 @@ class Search{
     ///   - searchingItem: Item, that need to find.
     ///   - iteration: How many time was call this function (need for return position of item).
     /// - Returns:Position if exist else nil.
-    public func MineRecursiveLinearSearch<T: Equatable>(array: inout Array<T>, searchingItem: T, iteration: Int = 0) -> Int? {
+    public func MineRecursiveLinearSearch<T: Equatable>(array: inout Array<T>, searchingItem: T,_ iteration: Int = 0) -> Int? {
         if array.count == 0 {
             return nil
         } else {
@@ -93,7 +93,7 @@ class Search{
                 return iteration
             } else {
                 array = Array(array.dropFirst())
-                return MineRecursiveLinearSearch(array: &array, searchingItem: searchingItem, iteration: iteration+1) 
+                return MineRecursiveLinearSearch(array: &array, searchingItem: searchingItem, iteration+1)
             }
         }
     }
@@ -103,7 +103,7 @@ class Search{
     ///   - array: sorted array for searching.
     ///   - searchingItem: item, that need to find.
     /// - Returns: Position if item exist else nil.
-    func BinarySearch(array: [Int], searchingItem: Int) -> Int? {
+    public func BinarySearch(array: Array<Int>, searchingItem: Int) -> Int? {
         var leftBorder:Int = 0,
         rightBorder:Int = array.count - 1,
         mid: Int
@@ -127,7 +127,7 @@ class Search{
     ///   - leftBorder: Left border for search in array ( for correct search - default 0).
     ///   - rightBorder: Right border for search in array.
     /// - Returns: Position if item exist else nil.
-    func RecursiveBinarySearch( array: Array<Int>, searchingItem: Int, leftBorder: Int = 0, rightBorder: Int) -> Int? {
+    public func RecursiveBinarySearch( array: Array<Int>, searchingItem: Int, from leftBorder: Int = 0, to rightBorder: Int) -> Int? {
         if leftBorder > rightBorder {
             return nil
         } else {
@@ -135,7 +135,7 @@ class Search{
             if array[mid] == searchingItem {
                 return mid
             } else {
-                return array[mid] > searchingItem ? RecursiveBinarySearch(array: array, searchingItem: searchingItem, leftBorder: leftBorder, rightBorder: mid - 1) : RecursiveBinarySearch(array: array, searchingItem: searchingItem, leftBorder: mid + 1, rightBorder: rightBorder)
+                return array[mid] > searchingItem ? RecursiveBinarySearch(array: array, searchingItem: searchingItem, from: leftBorder, to: mid - 1) : RecursiveBinarySearch(array: array, searchingItem: searchingItem, from: mid + 1, to: rightBorder)
             }
         }
     }
