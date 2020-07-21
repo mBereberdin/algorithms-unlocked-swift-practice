@@ -78,7 +78,7 @@ class Search{
         }
     }
     
-    /// Recursive linear search with memory clean. Return first position if item founded else nil. Your array will clean.
+    /// Recursive linear search with memory clean. Return first position if item founded else nil. Your array will empty.
     /// - Parameters:
     ///   - array: Array for searching item.
     ///   - searchingItem: Item, that need to find.
@@ -100,8 +100,8 @@ class Search{
     
     /// Binary search for sorted int arrays. Return position if item exist else nil.
     /// - Parameters:
-    ///   - array: sorted array for searching.
-    ///   - searchingItem: item, that need to find.
+    ///   - array: Sorted array for searching.
+    ///   - searchingItem: Item, that need to find.
     /// - Returns: Position if item exist else nil.
     public func BinarySearch(array: Array<Int>, searchingItem: Int) -> Int? {
         var leftBorder:Int = 0,
@@ -120,12 +120,12 @@ class Search{
         return nil
     }
     
-    /// Recursive binary search. Return first position if item founded else nil.
+    /// Recursive binary search. Return position if item founded else nil.
     /// - Parameters:
     ///   - array: Sorted array for searching.
     ///   - searchingItem: Item, that need to find.
-    ///   - leftBorder: Left border for search in array ( for correct search - default 0).
-    ///   - rightBorder: Right border for search in array.
+    ///   - leftBorder: Left border for search in array ( for correct search - default 0 ).
+    ///   - rightBorder: Right border for search in array ( for correct search - array.count - 1).
     /// - Returns: Position if item exist else nil.
     public func RecursiveBinarySearch( array: Array<Int>, searchingItem: Int, from leftBorder: Int = 0, to rightBorder: Int) -> Int? {
         if leftBorder > rightBorder {
@@ -140,6 +140,14 @@ class Search{
         }
     }
     
+    /// Recursive binary search with memory clean. Return index if item founded else nil. Your array will empty.
+    /// - Parameters:
+    ///   - array: Sorted array for searching.
+    ///   - searchingItem: Item, that need to find.
+    ///   - leftBorder: Left border for search in array ( for correct search - default 0 ).
+    ///   - rightBorder: Right border for search in array ( for correct search - array.count - 1).
+    ///   - droppedItems: Count of dropped items. Need for determine position of item.
+    /// - Returns: Position if item exist else nil.
     public func MineRecursiveBinarySearch(array: inout Array<Int>, searchingItem: Int, from leftBorder: Int = 0, to rightBorder: Int, droppedItems: Int = 0) -> Int? {
         if rightBorder == 0 {
             return array.popLast() == searchingItem ? droppedItems : nil
