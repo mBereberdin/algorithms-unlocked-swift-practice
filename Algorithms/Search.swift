@@ -139,4 +139,26 @@ class Search{
             }
         }
     }
+    
+    public func MineRecursiveBinarySearch(array: inout Array<Int>, searchingItem: Int, from leftBorder: Int = 0, to rightBorder: Int, droppedItems: Int = 0) -> Int? {
+        if rightBorder == 0 {
+            return array.popLast() == searchingItem ? droppedItems : nil
+        } else {
+            let mid = (leftBorder + rightBorder) / 2
+            var droppedItemsCopy = droppedItems
+            if array[mid] == searchingItem {
+                array.removeAll()
+                return droppedItems == 0 ? mid : droppedItems + mid
+            } else {
+                if array[mid] > searchingItem {
+                    array = Array(array[leftBorder...mid-1])
+                } else {
+                    droppedItemsCopy += array.count
+                    array = Array(array[mid+1...rightBorder])
+                    droppedItemsCopy -= array.count
+                }
+                return MineRecursiveBinarySearch(array: &array, searchingItem: searchingItem, to: array.count-1, droppedItems: droppedItemsCopy)
+            }
+        }
+    }
 }
