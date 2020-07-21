@@ -67,7 +67,7 @@ class Search{
     ///   - index: Start position in array for search.
     /// - Returns:Position if exist else nil.
     public func RecursiveLinearSearch<T: Equatable>(array: Array<T>, searchingItem: T,startPosition index: Int) -> Int? {
-        if index > array.count {
+        if index > array.count - 1 {
             return nil
         } else {
             if array[index] == searchingItem {
