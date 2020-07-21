@@ -8,51 +8,38 @@
 
 import Foundation
 
-func SafeUnwrapAndPrintPosition (_ someOptionalValue: Int?) {
+func SafeUnwrapAndPrintPosition<T>(_ message: String?,_ someOptionalValue: Int?,_ searchedItem: T) {
+    print("\n*\(message ?? "Some function")*")
     guard let position = someOptionalValue else {
-        return print("Item not found")
+        return print("\(searchedItem) not found")
     }
-    return print("Item found on \(position) position")
+    return print("\(searchedItem): found on \(position) position")
 }
 
-//Main
+func Main () {
 var arrayOfBooks: [Book] = [
     Book(author: "Gogol", title: "Dead souls"),
     Book(author: "Dostoevsky", title: "The Idiot"),
     Book(author: "Pushkin", title: "The Daughter of the Commandant"),
     Book(author: "Pushkin", title: "The Queen Of spades")
 ],
-arrayOfNumbers: [Int8] = [1,1,1,2,4],
-sortedArrayOfNumbers: [Int8] = [1,2,3,4,5,6,7,8],
-someNumber = Int(Int8.random(in: 1...10))
+arrayOfNumbers: [Int] = [1,5,3,2,4],
+sortedArrayOfNumbers: [Int] = [1,2,3,4,5,6,7,8],
+randomNumber = Int.random(in: 1...10)
 
-print("Books:")
-for book in arrayOfBooks {
-    print("\(book.author) - \(book.title)")
-}
-print()
-print(arrayOfNumbers)
-
-print("\n*Linear search*")
-//Authors check
-SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfBooks , searchingItem: Book(author: "Pushkin", title: "The Queen Of spades")))
-//Numbers check
-SafeUnwrapAndPrintPosition(Search().LinearSearch(array: arrayOfNumbers , searchingItem: 4))
-print("\n*BetterLinear search*")
-SafeUnwrapAndPrintPosition(Search().BetterLinearSearch(array: arrayOfNumbers , searchingItem: 4))
-print("\n*SentinelLinear search*")
-SafeUnwrapAndPrintPosition(Search().SentinelLinearSearch(array: arrayOfNumbers , searchingItem: 4))
-print("\n*Recursion linear search*")
-SafeUnwrapAndPrintPosition(Search().RecursiveLinearSearch(array: arrayOfNumbers, searchingItem: 4, startPosition: 0))
-print("\n*Mine recursion linear search*")
-SafeUnwrapAndPrintPosition(Search().MineRecursiveLinearSearch(array: &arrayOfNumbers, searchingItem: 4))
+SafeUnwrapAndPrintPosition("Linear search. Authors",Search().LinearSearch(array: arrayOfBooks , searchingItem: Book(author: "Pushkin", title: "The Queen Of spades")), Book(author: "Pushkin", title: "The Queen Of spades"))
+SafeUnwrapAndPrintPosition("Linear search. Authors", Search().LinearSearch(array: arrayOfNumbers , searchingItem: randomNumber), randomNumber)
+SafeUnwrapAndPrintPosition("BetterLinear search", Search().BetterLinearSearch(array: arrayOfNumbers , searchingItem: randomNumber), randomNumber)
+SafeUnwrapAndPrintPosition("SentinelLinear search", Search().SentinelLinearSearch(array: arrayOfNumbers , searchingItem: randomNumber), randomNumber)
+SafeUnwrapAndPrintPosition("Recursion linear search", Search().RecursiveLinearSearch(array: arrayOfNumbers, searchingItem: randomNumber, startPosition: 0), randomNumber)
+SafeUnwrapAndPrintPosition("Mine recursion linear search", Search().MineRecursiveLinearSearch(array: &arrayOfNumbers, searchingItem: randomNumber), randomNumber)
 print("\n*Factorail*")
-print("\(someNumber)! = \(Algorithm().Factorial(someNumber))")
-print("\n*Binary search*")
-SafeUnwrapAndPrintPosition(Search().BinarySearch(array: sortedArrayOfNumbers.map( { Int($0) }), searchingItem: 8))
-print("\n*Recursive binary search*")
-SafeUnwrapAndPrintPosition(Search().RecursiveBinarySearch(array: sortedArrayOfNumbers.map( { Int($0) } ), searchingItem: 8, to: sortedArrayOfNumbers.count - 1))
-print("\n*Mine recursive binary search*")
+print("\(randomNumber)! = \(Algorithm().Factorial(randomNumber))")
+SafeUnwrapAndPrintPosition("Binary search", Search().BinarySearch(array: sortedArrayOfNumbers.map( { Int($0) }), searchingItem: randomNumber), randomNumber)
+SafeUnwrapAndPrintPosition("Recursive binary search", Search().RecursiveBinarySearch(array: sortedArrayOfNumbers.map( { Int($0) } ), searchingItem: randomNumber, to: sortedArrayOfNumbers.count - 1), randomNumber)
 var tempArr = sortedArrayOfNumbers.map( { Int($0) } )
-SafeUnwrapAndPrintPosition(Search().MineRecursiveBinarySearch(array: &tempArr, searchingItem: 8, to: sortedArrayOfNumbers.count - 1))
+SafeUnwrapAndPrintPosition("MineRecursiveBinarySearch", Search().MineRecursiveBinarySearch(array: &tempArr, searchingItem: randomNumber, to: sortedArrayOfNumbers.count - 1), randomNumber)
 print()
+}
+
+Main()
